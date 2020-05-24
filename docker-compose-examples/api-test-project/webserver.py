@@ -13,10 +13,14 @@ def connectdb():
     cur.exeucte('Select version()')
     version = cur.fetchone()
     cur.close()
+    #version = '9.5'
     if conn != None:
-            return "<h1>Great! I am running using docker compose setup! As i can connect to Postgres DB with version: " + version + "</h1>"
+            success_string="<h1>Great! I am running using docker compose setup! As i can connect to Postgres DB with version: " + version + "</h1>"
+            return success_string
     else:
-            return "<h1>Sorry! Your docker compose setup is not working as unable to connect to DB!</h1>"
+
+            failure_string = "<h1>Sorry! Your docker compose setup is not working as unable to connect to DB!</h1>"
+            return failure_string
 
 @app.route('/', methods=['GET'])
 def home():
@@ -24,7 +28,9 @@ def home():
 
 @app.route('/get-apis', methods=['GET'])
 def getapis():
-    return "<h1>/connectdb - Only single API supported</h1>"
+    return "<h1> 1) /connectdb - Only single API supported.It gives you the version of Postgres DB</h1>"
 
-# Start Program on on localhost on port 80
-app.run(port=80)
+
+
+# Start Program on on localhost on port 8000
+app.run(port=8000)

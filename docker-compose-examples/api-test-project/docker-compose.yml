@@ -10,7 +10,5 @@ services:
   web:
     build: .
     command: python webserver.py
-    ports:
-      - "8000:8000"
     depends_on:
       - db
