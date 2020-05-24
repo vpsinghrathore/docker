@@ -16,7 +16,7 @@ def home():
     if conn != None:
             return "<h1>Great! I am running using docker compose setup! As i can connect to Postgres DB with version: " + version + "</h1>"
     else:
-            return "<h1>Great! I am running using docker compose setup! As i can connect to Postgres DB</h1>"
+            return "<h1>Sorry! Your docker compose setup is not working as unable to connect to DB!</h1>"
 
 @app.route('/vptesting', methods=['GET'])
 def vptesting():
