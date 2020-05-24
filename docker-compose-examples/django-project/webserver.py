@@ -6,7 +6,7 @@ app.config["DEBUG"] = True
 
 
 @app.route('/connectdb', methods=['GET'])
-def home():
+def connectdb():
     conn = None
     conn = psycopg2.connect(host="localhost", dbname="postgres", user="postgres", password="postgres")
     cur = conn.cursor()
@@ -18,9 +18,13 @@ def home():
     else:
             return "<h1>Sorry! Your docker compose setup is not working as unable to connect to DB!</h1>"
 
-@app.route('/vptesting', methods=['GET'])
-def vptesting():
-    return "<h1>Great! I am access my own URI</h1>"
+@app.route('/', methods=['GET'])
+def home():
+    return "<h1>Great!HAPPY API Programming !</h1>"
 
-# Start Program on on localhost on port 8000
-app.run(host='0.0.0.0', port=8000)
+@app.route('/get-apis', methods=['GET'])
+def getapis():
+    return "<h1>/connectdb - Only single API supported</h1>"
+
+# Start Program on on localhost on port 80
+app.run(port=80)
